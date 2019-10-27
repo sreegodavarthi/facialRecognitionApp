@@ -16,13 +16,33 @@ h1 {
   font-family: futura;
   font-size: 3rem;
   margin: 0px;
+  margin-bottom: 2rem;
 }
 .mood-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.video-container {
+  position: relative;
+  width: 56%;
 }
 
 canvas {
   position: absolute;
+  left: 2vh;
+}
+
+video {
+  padding: 0px 11px;
+  border: 2px dashed mediumvioletred;
+}
+
+.mood-msg {
+  width: 50%;
+  text-align: center;
+  font-size: 48px;
+  font-family: futura;
+  color: rgb(61, 90, 254);
 }

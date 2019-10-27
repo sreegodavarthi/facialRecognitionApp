@@ -17,7 +17,7 @@ function startVideo() {
 
 video.addEventListener("play", () => {
   const canvas = faceapi.createCanvasFromMedia(video);
-  document.querySelector(".mood-container").append(canvas);
+  document.querySelector(".video-container").append(canvas);
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
   setInterval(async () => {
@@ -27,6 +27,30 @@ video.addEventListener("play", () => {
       .withFaceExpressions();
     console.log(detections);
     const resizeDetections = faceapi.resizeResults(detections, displaySize);
+    if (resizeDetections.length > 0) {
+      if (
+        resizeDetections[0].expressions.happy > 0.9 &&
+        resizeDetections[0].expressions.happy < 1.0
+      ) {
+        document.querySelector(".mood-msg").innerText = "Nice..Keep Smiling!!!";
+      } else if (
+        resizeDetections[0].expressions.neutral > 0.9 &&
+        resizeDetections[0].expressions.neutral < 1.0
+      ) {
+        document.querySelector(".mood-msg").innerText = "Smile please!!!";
+      } else if (
+        resizeDetections[0].expressions.angry > 0.9 &&
+        resizeDetections[0].expressions.angry < 1.0
+      ) {
+        document.querySelector(".mood-msg").innerText =
+          "Why so angry??? Chill!!!";
+      } else if (
+        resizeDetections[0].expressions.surprised > 0.9 &&
+        resizeDetections[0].expressions.surprised < 1.0
+      ) {
+        document.querySelector(".mood-msg").innerText = "Surprised???";
+      }
+    }
     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
     faceapi.draw.drawDetections(canvas, resizeDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizeDetections);
