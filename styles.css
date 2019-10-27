@@ -1,0 +1,28 @@
+body {
+  background: linear-gradient(120deg, rgb(244, 0, 136), rgb(101, 31, 255));
+  padding: 2px;
+  overflow: hidden;
+}
+
+.main {
+  position: relative;
+  padding: 2.4rem;
+  height: 88vh;
+  background: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  font-family: futura;
+  font-size: 3rem;
+  margin: 0px;
+}
+.mood-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  position: absolute;
+}
